@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="col-12">
+        <h1>Patient Records</h1>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">First Name</th>
+                    <th class="text-center">Last Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Phone No</th>
+                    <th class="text-center">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phoneno }}</td>
+                    <td>{{ user.status }}</td>
+                </tr>
+            </tbody>
+        </table>
+</div>

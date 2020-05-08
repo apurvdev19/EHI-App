@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="col-12">
+        <h1>New Patient Case Dashboard</h1>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">First Name</th>
+                    <th class="text-center">Last Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Phone No</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phoneno }}</td>
+                    <td>{{ user.status }}</td>
+                    <td>
+                        <button class="btn btn-info mr-2" (click)="showEditUserForm(user)">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn btn-danger" (click)="removeUser(user)">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn btn-success" (click)="showAddUserForm()">Add Patients <i class="fa fa-plus"></i></button>
+        <br />
+        <br />
+
+        <form *ngIf="userForm">
+            <h2>Add New Patient</h2>
+            <p>First Name: <input type="text" name="firstName" [(ngModel)]="newUser.firstName" /></p>
+            <p>Last Name: <input type="text" name="lastName" [(ngModel)]="newUser.lastName" /></p>
+            <p>Email: <input type="text" name="email" [(ngModel)]="newUser.email" /></p>
+            <p>Phone No: <input type="text" name="phoneno" [(ngModel)]="newUser.phoneno" /></p>
+            <p>Status (Active/Inactive): <input type="text" name="status" [(ngModel)]="newUser.status" /></p>
+            <p>
+                <button type="button" class="btn btn-primary mr-2" (click)="saveUser(newUser)">Submit</button>
+                <button type="button" class="btn btn-warning" (click)="cancelNewUser()">Cancel</button>
+            </p>
+        </form>
+
+        <form *ngIf="editUserForm">
+            <h2>Edit User Details</h2>
+            <p>First Name: <input type="text" name="firstName" [(ngModel)]="editedUser.firstName" /></p>
+            <p>Last Name: <input type="text" name="lastName" [(ngModel)]="editedUser.lastName" /></p>
+            <p>Email: <input type="text" name="email" [(ngModel)]="editedUser.email" /></p>
+            <p>Phone No: <input type="text" name="phoneno" [(ngModel)]="editedUser.phoneno" /></p>
+            <p>Status (Active/Inactive): <input type="text" name="status" [(ngModel)]="editedUser.status" /></p>
+            <p>
+                <button type="button" class="btn btn-primary mr-2" (click)="updateUser(editedUser)">Submit</button>
+                <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
+            </p>
+        </form>
+    </div>
+</div>
